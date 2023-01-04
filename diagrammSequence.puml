@@ -1,0 +1,20 @@
+@startuml
+
+skinparam actorStyle awesome
+title Diagramme de séquence - Gestion bancaire
+
+actor Client
+actor Banque #red
+actor Agence #yellow
+actor Employe #green
+actor Directeur #purple
+
+Client -> Agence: Consulter son compte
+Client -> Agence: Effectuer un virement
+Client -> Agence: Demander une carte bancaire
+Client -> Agence: Modifier ses informations personnelles
+Agence -> Banque: Gérer les comptes clients
+Directeur -> Agence: Gérer les employés
+Banque -> Agence: Gérer les agences
+
+@enduml

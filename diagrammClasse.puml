@@ -1,0 +1,85 @@
+@startuml
+
+class Client {
+  - nom: string
+  - adresse: string
+  - coordonnees: string
+  + getNom(): string
+  + setNom(nom: string): void
+  + getAdresse(): string
+  + setAdresse(adresse: string): void
+  + getCoordonnees(): string
+  + setCoordonnees(coordonnees: string): void
+  + consulterCompte(): void
+  + effectuerVirement(): void
+  + demanderCarteBancaire(): void
+  + modifierInformations(): void
+}
+
+class Banque {
+  - nom: string
+  - siegeSocial: string
+  + getNom(): string
+  + setNom(nom: string): void
+  + getSiegeSocial(): string
+  + setSiegeSocial(siegeSocial: string): void
+  + gererComptesClients(): void
+}
+
+class Agence {
+  - adresse: string
+  - horaires: string
+  + getAdresse(): string
+  + setAdresse(adresse: string): void
+  + getHoraires(): string
+  + setHoraires(horaires: string): void
+  + gererEmployes(): void
+}
+
+class Employe {
+  - nom: string
+  - adresse: string
+  + getNom(): string
+  + setNom(nom: string): void
+  + getAdresse(): string
+  + setAdresse(adresse: string): void
+
+
+class Compte {
+  - numero: string
+  - solde: number
+  - titulaire: Client
+  + getNumero(): string
+  + setNumero(numero: string): void
+  + getSolde(): number
+  + setSolde(solde: number): void
+  + getTitulaire(): Client
+  + setTitulaire(titulaire: Client): void
+  + consulterSolde(): void
+  + effectuerVirement(montant: number): void
+}
+
+
+class Carte {
+  - type: string
+  - dateExpiration: string
+  + getType(): string
+  + setType(type: string): void
+  + getDateExpiration(): string
+  + setDateExpiration(dateExpiration: string): void
+}
+
+class Directeur extends Employe {
+  + gererAgences(): void
+}
+
+
+
+Client "1" -- "*" Compte
+Compte "1" -- "1" Banque
+Banque "1" -- "0-n" Agence
+Agence "1" -- "1-n" Employe
+Agence "1" -- "1" Directeur
+Carte "1" -- "1-n" Compte
+
+@enduml
