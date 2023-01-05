@@ -70,6 +70,7 @@ class Carte {
 }
 
 class Directeur extends Employe {
+  - agence: Agence
   + gererAgences(): void
 }
 
